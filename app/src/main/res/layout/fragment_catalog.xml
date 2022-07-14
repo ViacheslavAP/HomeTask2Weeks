@@ -6,7 +6,7 @@
     tools:context=".CatalogFragment"
     android:background="@android:color/holo_orange_dark">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/catalog"

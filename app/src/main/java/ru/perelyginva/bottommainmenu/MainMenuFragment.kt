@@ -14,16 +14,16 @@ import ru.perelyginva.bottommainmenu.databinding.FragmentMainMenuBinding
 
 class MainMenuFragment : BottomSheetDialogFragment() {
 
-    private var _binding: FragmentMainMenuBinding? = null
-    private val binding get() = _binding!!
+    private var binding: FragmentMainMenuBinding? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentMainMenuBinding.inflate(layoutInflater, container, false)
+        binding = FragmentMainMenuBinding.inflate(layoutInflater, container, false)
 
-        binding.navView.setNavigationItemSelectedListener { menuItem ->
+        binding?.navView?.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
 
                 R.id.homeMenu -> {
@@ -68,7 +68,7 @@ class MainMenuFragment : BottomSheetDialogFragment() {
             }
             true
         }
-        return binding.root
+        return binding!!.root
     }
 
 }

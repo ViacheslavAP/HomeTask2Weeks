@@ -5,37 +5,39 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ru.perelyginva.bottommainmenu.databinding.FragmentDetailsBinding
 
 
 class DetailsFragment : BottomSheetDialogFragment() {
 
-    private var _binding: FragmentDetailsBinding? = null
-    private val binding get() = _binding!!
+    private var binding: FragmentDetailsBinding? = null
+
 
     override fun onCreateView(
 
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View {
-        _binding = FragmentDetailsBinding.inflate(layoutInflater, container, false)
+    ): View? {
+        binding = FragmentDetailsBinding.inflate(layoutInflater, container, false)
 
-        binding.tvNameDetails .text = arguments?.getString(Const.NAME_MOVIES).toString()
-        binding.tvDurationDetails.text = arguments?.getString(Const.DURATIONS_MOVIES).toString()
-        binding.tvActorsDetails.text = arguments?.getString(Const.NAME_ACTORS_MOVIES).toString()
+        binding?.tvNameDetails?.text = arguments?.getString("name_movies").toString()
+        binding?.tvDurationDetails?.text = arguments?.getString("duration_movies").toString()
+        binding?.tvActorsDetails?.text = arguments?.getString("actors_movies").toString()
 
-        when(binding.tvNameDetails.text){
+        when(binding?.tvNameDetails?.text){
             getString(R.string.terminator) ->
-                binding.imDetails.setImageResource(R.drawable.terminator)
+                binding?.imDetails?.setImageResource(R.drawable.terminator)
         }
 
-        binding.imClose.setOnClickListener {
-          dismiss()
-        }
+        binding?.imClose?.setOnClickListener(View.OnClickListener{
+            dismiss()
+        })
 
-        return binding.root
+
+
+        return binding?.root
     }
-
 
 }

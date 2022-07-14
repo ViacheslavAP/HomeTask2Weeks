@@ -7,8 +7,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    >
    <com.google.android.material.appbar.MaterialToolbar
        android:id="@+id/top_app_bar"
        android:layout_width="match_parent"
@@ -33,6 +40,11 @@
        app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintTop_toBottomOf="@+id/top_app_bar"
        android:background="@android:color/holo_orange_dark"/>
+</LinearLayout>
+
+
+
+
 
    <com.google.android.material.bottomnavigation.BottomNavigationView
        android:id="@+id/bottomNavView"
@@ -48,7 +60,7 @@
        app:itemTextColor="@color/bottom_nav_color"
        />
 
-   <com.google.android.material.card.MaterialCardView
+  <!-- <com.google.android.material.card.MaterialCardView
        android:id="@+id/cardMovies"
        android:layout_width="match_parent"
        android:layout_height="300dp"
@@ -93,7 +105,7 @@
              app:layout_constraintStart_toStartOf="@+id/imMovies"
              app:layout_constraintTop_toTopOf="parent" />
 
-         <TextView
+         <androidx.appcompat.widget.AppCompatAutoCompleteTextView
              android:id="@+id/tvMoviesActors"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
@@ -105,7 +117,7 @@
              android:layout_marginBottom="4dp"
              android:textStyle="italic"/>
 
-         <TextView
+         <androidx.appcompat.widget.AppCompatAutoCompleteTextView
              android:id="@+id/tvMoviesTitle"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
@@ -122,5 +134,6 @@
       </androidx.constraintlayout.widget.ConstraintLayout>
 
    </com.google.android.material.card.MaterialCardView>
+   -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

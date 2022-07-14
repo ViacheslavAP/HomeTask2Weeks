@@ -4,34 +4,25 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import ru.perelyginva.bottommainmenu.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
-    private var _binding: ActivityMainBinding? = null
-    private val binding get() = _binding!!
+    private var binding: ActivityMainBinding? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        _binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
-        setContentView(binding.root)
+        setContentView(binding?.root)
 
 
-        setSupportActionBar(binding.topAppBar)//не забывать включать при работе с барами
+        setSupportActionBar(binding?.topAppBar)//не забывать включать при работе с барами
 
-        binding.cardMovies.setOnClickListener {
+       // binding?.cardMovies?.setOnClickListener(this)
 
-            val details = DetailsFragment()
-            val  param = Bundle()
-            param.putString(Const.NAME_MOVIES, binding.tvMoviesTitle.text.toString())
-            param.putString(Const.DURATIONS_MOVIES, binding.tvMoviesDuration.text.toString())
-            param.putString(Const.NAME_ACTORS_MOVIES, binding.tvMoviesActors.text.toString())
-            details.arguments = param
-            details.show(supportFragmentManager, Const.DETAILS)
-
-        }
-
-        binding.topAppBar.setOnMenuItemClickListener { menuItem: MenuItem ->
+        binding?.topAppBar?.setOnMenuItemClickListener { menuItem: MenuItem ->
             when (menuItem.itemId) {
                 R.id.favoritesItemTopNav -> {
                     supportFragmentManager.beginTransaction()
@@ -50,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        binding.bottomNavView.setOnItemSelectedListener { item ->
+        binding?.bottomNavView?.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.homeBottomMenu -> {
                     supportFragmentManager.beginTransaction()
@@ -99,9 +90,21 @@ class MainActivity : AppCompatActivity() {
                     "main_menu")
 
             }
-
         }
 
         return true
+
+    }
+
+    override fun onClick(view: View?) {
+
+//        val details = DetailsFragment()
+//        val param = Bundle()
+//        param.putString("name_movies", binding?.tvMoviesTitle?.text.toString())
+//        param.putString("duration_movies", binding?.tvMoviesDuration?.text.toString())
+//        param.putString("actors_movies", binding?.tvMoviesActors?.text.toString())
+//        details.arguments = param
+//        details.show(supportFragmentManager, "details")
+
     }
 }
